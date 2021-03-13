@@ -1,7 +1,8 @@
 # making a tick tack game
 # 1.) create board
 # 2.)update board
-# 3.) make everything in seperate functions and game engine just calls functions in order while game is valid
+# 3.) make everything in seperate functions and game engine just /
+# calls functions in order while game is valid
 from colorama import *
 import sys
 from termcolor import colored, cprint
@@ -10,16 +11,20 @@ empty_space = ' '
 
 
 def tick_tock_game():
-    '''this is simple tick tock game '''
+    '''this is simple tick tock game played in terminal '''
     # Generate board and tell that bame has started
     text = colored('Welcome to TICK TOCK game!!', 'cyan', attrs=['blink'])
     print(text)
     time.sleep(2)
-    print(Fore.YELLOW + f'When you are ready insert position in which you whant your \
-character')
+    print(Fore.YELLOW + f'When you are ready insert position in which you \
+        whant your character')
     time.sleep(3)
     print(f'The one who makes three in a row wins!' + Style.RESET_ALL)
     time.sleep(2)
+
+    # This is place where intro is finished and game begins, the x
+    # initialized below is used to diferentiate between players to
+    # know which ones turn it is
     x = 1
     space_values = {'a1': empty_space, 'a2': empty_space, 'a3': empty_space,
                     'b1': empty_space, 'b2': empty_space, 'b3': empty_space,
@@ -39,7 +44,7 @@ character')
                 else:
                     print(f'You can not place your tile in that space, choose \
 another place')
-            print(f'x part ends')
+            check_for_victory(space_values)
         elif x == 0:
             input_text = 'O'
             x = 1
@@ -52,7 +57,8 @@ another place')
                     break
                 else:
                     print(f'You can not place your tile in that space, choose \
-                    another place')
+another place')
+            check_for_victory(space_values)
 
 
 def print_board(space_values):
@@ -66,14 +72,14 @@ def print_board(space_values):
 
 
 space_values = {'a1': empty_space, 'a2': empty_space, 'a3': empty_space,
-                    'b1': empty_space, 'b2': empty_space, 'b3': empty_space,
-                    'c1': empty_space, 'c2': empty_space, 'c3': empty_space}
+                'b1': empty_space, 'b2': empty_space, 'b3': empty_space,
+                'c1': empty_space, 'c2': empty_space, 'c3': empty_space}
 
 
 def check_for_victory(space_values):
-    if space_values['a1'] == space_values['a1'] == space_values['a1'] \
-    and space_values['a1'] == empty_space:
+    if space_values['a1'] == space_values['a1'] == space_values['a1'] and \
+            space_values['a1'] != empty_space:
         print(f'you won!')
 
 
-check_for_victory(space_values)
+tick_tock_game()
